@@ -1,34 +1,81 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoZone Exchange</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CryptoZone Exchange</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="CryptoZone Exchange Logo" class="logo" />
-    <h1>Bienvenue sur CryptoZone Exchange</h1>
-  </header>
+    <header>
+        <h1>CryptoZone Exchange</h1>
+        <p>Achetez et vendez vos cryptomonnaies en toute sécurité</p>
+    </header>
+    <main>
+        <section class="conversion">
+            <h2>Convertisseur Crypto</h2>
+            <p>Exemple: 1 BTC ≈ 65 000 USD ≈ 39 000 000 XAF</p>
+        </section>
 
-  <main>
-    <section class="actions">
-      <button onclick="window.location.href='acheter.html'">Acheter</button>
-      <button onclick="window.location.href='vendre.html'">Vendre</button>
-    </section>
+        <section class="addresses">
+            <h2>Adresses Crypto du vendeur</h2>
+            <ul>
+                <li><strong>Bitcoin (BTC):</strong> bc1qexamplebtcaddress</li>
+                <li><strong>Solana (SOL):</strong> solanaexampleaddress</li>
+                <li><strong>USDT (TRC20):</strong> Texampleusdtaddress</li>
+            </ul>
+        </section>
 
-    <section class="infos">
-      <h2>Dépôt minimum : 10 USDT (5600 FCFA)</h2>
-      <h2>Retrait max : 560 000 FCFA / jour (1000 USDT)</h2>
-      <h2>Retrait jusqu’à 25 000 USDT pour utilisateurs vérifiés (KYC)</h2>
-    </section>
-  </main>
+        <section class="transaction-form">
+            <h2>Acheter / Vendre</h2>
+            <form id="transactionForm" onsubmit="sendToWhatsApp(); return false;">
+                <label>Nom complet:<input type="text" id="name" required></label>
+                <label>Adresse email:<input type="email" id="email" required></label>
+                <label>Ville:<input type="text" id="city" required></label>
+                <label>Montant (en FCFA ou USDT):<input type="text" id="amount" required></label>
+                <label>Type de cryptomonnaie:
+                    <select id="crypto" required>
+                        <option value="Bitcoin">Bitcoin</option>
+                        <option value="Solana">Solana</option>
+                        <option value="USDT">USDT</option>
+                    </select>
+                </label>
+                <label>Adresse de réception:<input type="text" id="wallet" required></label>
+                <label>Zone géographique:
+                    <select id="zone" required>
+                        <option value="Afrique Centrale">Afrique Centrale</option>
+                        <option value="Afrique de l'Ouest">Afrique de l'Ouest</option>
+                    </select>
+                </label>
+                <button type="submit">Envoyer via WhatsApp</button>
+            </form>
+        </section>
 
-  <footer>
-    <p>Contact WhatsApp : +1 810-355-2682</p>
-    <p>Email : <a href="mailto:cryptozoneexchange@gmail.com">cryptozoneexchange@gmail.com</a></p>
-  </footer>
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:Crytozone.exchange@gmail.com">Crytozone.exchange@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/18103552682" target="_blank">+1 810 355 2682</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 CryptoZone Exchange. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const city = document.getElementById('city').value;
+            const amount = document.getElementById('amount').value;
+            const crypto = document.getElementById('crypto').value;
+            const wallet = document.getElementById('wallet').value;
+            const zone = document.getElementById('zone').value;
+
+            const message = `Demande via le site CryptoZone Exchange:%0A🔹 Nom: ${name}%0A🔹 Email: ${email}%0A🔹 Ville: ${city}%0A🔹 Zone: ${zone}%0A🔹 Montant: ${amount}%0A🔹 Crypto: ${crypto}%0A🔹 Adresse de réception: ${wallet}`;
+
+            const url = `https://wa.me/18103552682?text=${message}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
